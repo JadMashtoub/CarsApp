@@ -1,6 +1,9 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { AppComponent } from './app/app.component';
+import { ViewcarComponent } from './app/viewcar/viewcar.component';
+import { importProvidersFrom } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { CarService } from './app/cars.service';
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+bootstrapApplication(ViewcarComponent, {
+  providers: [importProvidersFrom(HttpClientModule), CarService],
+}).catch((err) => console.error(err));
