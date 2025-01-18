@@ -1,6 +1,6 @@
 
 IF OBJECT_ID('cars') IS NOT NULL
-DROP TABLE SchemaName.TableName
+DROP TABLE cars
 GO
 CREATE TABLE cars
 (
@@ -15,7 +15,8 @@ CREATE TABLE cars
 GO
 
 INSERT INTO cars ([name],model,hasPlates,plateNo,keyNo)
-VALUES ('Toyota Corolla','2008','True','WML755','1');
+VALUES ('Toyota Corolla','2008','True','WML755','1'),
+        ('Honda Civic','2015','True','ABC123','4');
 
 
 select * FROM cars
