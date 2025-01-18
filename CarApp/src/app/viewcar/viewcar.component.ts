@@ -1,32 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { CarService } from '../cars.service';
 
 @Component({
   selector: 'app-viewcar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HttpClientModule],
   templateUrl: './viewcar.component.html',
   styleUrls: ['./viewcar.component.scss'],
 })
-export class ViewcarComponent implements OnInit {
-  cars: any[] = [];
+export class ViewcarComponent {
+  cars: any[] = []; 
 
-  constructor(private carService: CarService) {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.loadCars();
+    this.getCars();
   }
 
-  loadCars(): void {
-    this.carService.getAllCars().subscribe(
-      (data) => {
-        this.cars = data;
-        console.log('Cars loaded:', data);
-      },
-      (error) => {
-        console.error('Error loading cars:', error);
-      }
-    );
+  getCars(): void {
+    this.http.get<any[]>('http://localhost:3000/cars') 
+      .subscribe({
+        next: (data) => {
+          this.cars = data;
+        },
+        error: (err) => {
+          console.error('Error fetching cars:', err);
+        },
+      });
   }
 }

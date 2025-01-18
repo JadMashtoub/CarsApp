@@ -1,6 +1,25 @@
 <h2>Car List</h2>
-<ul>
-  <li *ngFor="let car of cars">
-    {{ car.name }} - {{ car.model }} - {{ car.year }}
-  </li>
-</ul>
+<!-- TODO sort by descending carID -->
+<table border="1">
+    <thead>
+    <tr>
+      <th>Car ID</th>
+      <th>Name</th>
+      <th>Model</th>
+      <th>Has Plates</th>
+      <th>Plate Number</th>
+      <th>Key Number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- <tr *ngFor="let car of cars | orderBy: 'carID': 'desc'"> -->
+      <tr *ngFor="let car of cars">
+      <td>{{ car.carID }}</td>
+      <td>{{ car.name }}</td>
+      <td>{{ car.model }}</td>
+      <td>{{ car.hasPlates }}</td>
+      <td>{{ car.plateNo }}</td>
+      <td>{{ car.keyNo }}</td>
+    </tr>
+  </tbody>
+</table>
