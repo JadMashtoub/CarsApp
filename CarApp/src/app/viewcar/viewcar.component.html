@@ -1,4 +1,11 @@
 <h2>Car List</h2>
+  <nav class="navbar">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/addcar">Add Cars</a></li>
+      <li class="disabled">View Cars</li> <!-- Greyed out View Cars link -->
+    </ul>
+  </nav>
 <input type="text" 
 [(ngModel)]="searchTerm" 
 (ngModelChange)="filterCars()"
@@ -26,4 +33,5 @@ placeholder="Search by name or plate..." >
     </tr>
   </tbody>
 </table>
+
 

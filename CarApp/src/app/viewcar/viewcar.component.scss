@@ -9,7 +9,6 @@
 
 
 
-
   body, html {
     height: 100%;
     margin: 0;
@@ -21,8 +20,8 @@
   
   .container {
     text-align: center; /* Centers the content horizontally */
-    width: 80%;
-    max-width: 900px; 
+    width: 80%; /* You can adjust the width as needed */
+    max-width: 900px; /* Optional: Set a maximum width for better responsiveness */
   }
   
   table {
@@ -40,6 +39,40 @@
   input[type="text"] {
     padding: 8px;
     width: 100%;
-    max-width: 400px;
+    max-width: 400px; /* Optional: restrict the input width */
     margin-top: 20px;
+  }
+  
+  /* Navigation Menu Styles */
+  .navbar {
+    background-color: #333;
+    padding: 10px;
+  }
+  
+  .navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .navbar li {
+    margin: 0 15px;
+  }
+  
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  .navbar a:hover {
+    text-decoration: underline;
+  }
+  
+  .navbar .disabled {
+    color: grey;
+    pointer-events: none; /* Disables click events */
+    font-style: italic; /* Makes it look inactive */
   }
