@@ -49,7 +49,6 @@ router.post('/', async (req, res) => {
     }
   });
 //DELETE
-//UPDATE THIS TO EVENTUALLY DELETE BY UNIQUE IDENTIFIER
 router.delete('/:identifier', async (req, res) => {
   const { identifier } = req.params;
 
@@ -59,16 +58,16 @@ router.delete('/:identifier', async (req, res) => {
     // Check if the car exists
     const checkResult = await pool.request()
       .input('identifier', sql.NVarChar, identifier)
-      .query(`SELECT * FROM cars WHERE [name] = @identifier OR plateNo = @identifier`);
+      .query(`SELECT * FROM cars WHERE [carID] = @identifier OR plateNo = @identifier`);
 
     if (checkResult.recordset.length === 0) {
       return res.status(404).send('Car not found.');
     }
 
-    // Delete the car
+    // Delete the car by id or optionally plateNo if known
     await pool.request()
       .input('identifier', sql.NVarChar, identifier)
-      .query(`DELETE FROM cars WHERE [name] = @identifier OR plateNo = @identifier`);
+      .query(`DELETE FROM cars WHERE [carID] = @identifier OR plateNo = @identifier`);
 
     res.status(200).send('Car deleted successfully.');
   } catch (err) {
