@@ -8,8 +8,8 @@ CREATE TABLE cars
     PRIMARY KEY(CarID),
     [name] [NVARCHAR](50) NOT NULL,
     model [NVARCHAR](50) NOT NULL,
-    hasPlates [NVARCHAR](50) NOT NULL, --Can actually be null
-    plateNo [NVARCHAR](50) NOT NULL,
+    hasPlates [NVARCHAR](50) NOT NULL, 
+    plateNo [NVARCHAR](50),
     keyNo [NVARCHAR](50) NOT NULL
 );
 GO

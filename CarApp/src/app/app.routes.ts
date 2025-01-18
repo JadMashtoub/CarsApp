@@ -5,5 +5,5 @@ import { ViewcarComponent } from './viewcar/viewcar.component';
 export const routes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'viewcar', component: ViewcarComponent},
-    {path: 'Addcar', component: AddcarComponent}
+    {path: 'addcar', component: AddcarComponent}
 ];

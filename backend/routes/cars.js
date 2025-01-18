@@ -22,8 +22,8 @@ router.post('/', async (req, res) => {
     const { name, model, hasPlates, plateNo, keyNo } = req.body;
   
     console.log('Request Body:', req.body);
-  
-    if (!name || !model || !plateNo || !keyNo) {
+    // res.status(201).json({message: 'Car added succesfully!', car: req.body})
+    if (!name || !model || !keyNo) {
       return res.status(400).send('All required fields must be provided.');
     }
   
