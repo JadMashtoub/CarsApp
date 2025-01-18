@@ -48,5 +48,35 @@ router.post('/', async (req, res) => {
       sql.close();
     }
   });
+//DELETE
+//UPDATE THIS TO EVENTUALLY DELETE BY UNIQUE IDENTIFIER
+router.delete('/:identifier', async (req, res) => {
+  const { identifier } = req.params;
+
+  try {
+    const pool = await sql.connect(dbConfig);
+
+    // Check if the car exists
+    const checkResult = await pool.request()
+      .input('identifier', sql.NVarChar, identifier)
+      .query(`SELECT * FROM cars WHERE [name] = @identifier OR plateNo = @identifier`);
+
+    if (checkResult.recordset.length === 0) {
+      return res.status(404).send('Car not found.');
+    }
+
+    // Delete the car
+    await pool.request()
+      .input('identifier', sql.NVarChar, identifier)
+      .query(`DELETE FROM cars WHERE [name] = @identifier OR plateNo = @identifier`);
+
+    res.status(200).send('Car deleted successfully.');
+  } catch (err) {
+    console.error('Error deleting car:', err);
+    res.status(500).send('An error occurred.');
+  } finally {
+    sql.close();
+  }
+});
 
 module.exports = router;

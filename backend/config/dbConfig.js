@@ -3,6 +3,8 @@ const dbConfig = {
     password: process.env.DB_PASSWORD || 'fallback_password',
     server: process.env.DB_SERVER || 'fallback_server', // Add fallback
     database: process.env.DB_DATABASE || 'fallback_database',
+   
+   
     options: {
       encrypt: true,
       trustServerCertificate: false,
@@ -11,3 +13,4 @@ const dbConfig = {
   };
   
   module.exports = dbConfig;
+
