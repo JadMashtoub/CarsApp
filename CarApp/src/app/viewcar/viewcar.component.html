@@ -1,6 +1,10 @@
 <h2>Car List</h2>
-<!-- TODO sort by descending carID -->
-<table border="1">
+<input type="text" 
+[(ngModel)]="searchTerm" 
+(ngModelChange)="filterCars()"
+placeholder="Search by name or plate..." >
+
+<table class="table-bordered">
     <thead>
     <tr>
       <th>Car ID</th>
@@ -12,8 +16,7 @@
     </tr>
   </thead>
   <tbody>
-    <!-- <tr *ngFor="let car of cars | orderBy: 'carID': 'desc'"> -->
-      <tr *ngFor="let car of cars">
+    <tr *ngFor="let car of filteredCars">
       <td>{{ car.carID }}</td>
       <td>{{ car.name }}</td>
       <td>{{ car.model }}</td>
@@ -23,3 +26,4 @@
     </tr>
   </tbody>
 </table>
+
