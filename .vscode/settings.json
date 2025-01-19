@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/77188bfb-72ce-4602-9b69-fea76f201094/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/CarsList",
+    "appService.deploySubpath": "backend"
+}
