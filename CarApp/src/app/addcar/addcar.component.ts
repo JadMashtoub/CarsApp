@@ -29,8 +29,8 @@ export class AddcarComponent {
       hasPlates: !!this.car.hasPlates,
 
     };
-    // this.http.post('http://localhost:8080/cars', this.car, { responseType: 'text' })
-    this.http.post('http://localhost:3000/cars', this.car, { responseType: 'text' })
+    this.http.post('https://carslist.azurewebsites.net/cars', this.car, { responseType: 'text' })
+    // this.http.post('http://localhost:3000/cars', this.car, { responseType: 'text' })
 
       .subscribe({
         next: (data) => {

@@ -22,8 +22,8 @@ export class ViewcarComponent implements OnInit {
   }
 
 getCars(): void {
-  this.http.get<any[]>('http://localhost:3000/cars')
-  // this.http.get<any[]>('http://localhost:8080/cars')
+  // this.http.get<any[]>('http://localhost:3000/cars')
+  this.http.get<any[]>('https://carslist.azurewebsites.net/cars')
 
     .subscribe({
       next: (data) => {

@@ -5,8 +5,8 @@ const bodyParser = require('body-parser');
 const carsRoute = require('./routes/cars');
 
 const app = express();
-// const PORT = process.env.PORT || 8080;
-const PORT = 3000; //LOCALHOST
+const PORT = process.env.PORT || 8080;
+// const PORT = 3000; //LOCALHOST
 app.use(cors({
   origin: 'http://localhost:4200'}));
 app.use(bodyParser.json());
