@@ -16,7 +16,8 @@ CREATE TABLE cars
 GO
 -- dummy data
 INSERT INTO cars ([name],model,hasPlates,plateNo,keyNo,hasBooks)
-VALUES ('Toyota Corolla','2008','True','WML755','1','True'),
+VALUES ('TEST','TEST','True','TEST12','1','True'),
+        ('Toyota Corolla','2008','True','WML755','1','True'),
         ('Honda Civic','2015','True','ABC123','4','False');
 
 
