@@ -5,7 +5,8 @@ const bodyParser = require('body-parser');
 const carsRoute = require('./routes/cars');
 
 const app = express();
-const port = 3000;
+// const PORT = process.env.PORT || 8080;
+const PORT = 3000; //LOCALHOST
 app.use(cors({
   origin: 'http://localhost:4200'}));
 app.use(bodyParser.json());
@@ -13,6 +14,6 @@ app.use(bodyParser.json());
 app.use('/cars', carsRoute);
 
 // Start the server
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });

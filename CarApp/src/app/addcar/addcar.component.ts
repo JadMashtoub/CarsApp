@@ -16,14 +16,22 @@ export class AddcarComponent {
     name: '',
     model: '',
     hasPlates: 'true',
+    hasBooks:'true',
     plateNo: '',
-    keyNo: ''
+    keyNo: '',
   };
 
   constructor(private http: HttpClient, private router: Router) {}
 
   onSubmit(): void {
+    const payload ={
+      ...this.car,
+      hasPlates: !!this.car.hasPlates,
+
+    };
+    // this.http.post('http://localhost:8080/cars', this.car, { responseType: 'text' })
     this.http.post('http://localhost:3000/cars', this.car, { responseType: 'text' })
+
       .subscribe({
         next: (data) => {
           alert('Car added sucessfully!')

@@ -23,6 +23,8 @@ export class ViewcarComponent implements OnInit {
 
 getCars(): void {
   this.http.get<any[]>('http://localhost:3000/cars')
+  // this.http.get<any[]>('http://localhost:8080/cars')
+
     .subscribe({
       next: (data) => {
         console.log('Fetched Cars:', data);  // Log table
