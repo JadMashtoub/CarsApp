@@ -9,6 +9,8 @@ const PORT = process.env.PORT || 8080;
 // const PORT = 3000; //LOCALHOST
 app.use(cors({
   origin: 'http://localhost:4200'}));
+  app.use(cors({
+    origin: 'https://thankful-plant-0f897df1e.4.azurestaticapps.net'}));
 app.use(bodyParser.json());
 
 app.use('/cars', carsRoute);
