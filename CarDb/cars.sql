@@ -19,6 +19,5 @@ INSERT INTO cars ([name],model,hasPlates,plateNo,keyNo,hasBooks)
 VALUES ('Toyota Corolla','2008','True','WML755','1','True'),
         ('Honda Civic','2015','True','ABC123','4','False');
 
--- hasplates doesnt accept none
--- has books doesnt accept either (no text conversion)
+
 select * FROM cars
