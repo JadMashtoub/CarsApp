@@ -1,8 +1,8 @@
 # example netlify.toml
 [build]
   command = "ng build"
-  functions = "netlify/functions"
-  publish = "CarApp"
+  functions = "/Users/jadmashtoub/Desktop/cars/CarsApp/CarApp/netlify/functions"
+  publish = "dist/car-app/browser"
 
   ## Uncomment to use this redirect for Single Page Applications like create-react-app.
   ## Not needed for static site generators.
