@@ -52,28 +52,31 @@ router.post('/', async (req, res) => {
 
 // DELETE 
 router.delete('/:identifier', async (req, res) => {
-  const { identifier } = req.params;
+  let { identifier } = req.params;
+
+  const carID = parseInt(identifier, 10);
 
   try {
     const pool = await sql.connect(dbConfig);
 
     const checkResult = await pool.request()
       .input('identifier', sql.NVarChar, identifier)
-      .query(`SELECT * FROM cars WHERE [carID] = @identifier OR plateNo = @identifier`);
+      .query(`SELECT * FROM cars WHERE [carID] = @identifier`);
 
     if (checkResult.recordset.length === 0) {
-      return res.status(404).send('Car not found.');
+      return res.status(404).json({ message: 'Car not found.' });
     }
 
-    // Delete the car by id or optionally plateNo if known
-    await pool.request()
-      .input('identifier', sql.NVarChar, identifier)
-      .query(`DELETE FROM cars WHERE [carID] = @identifier OR plateNo = @identifier`);
+    if (!isNaN(carID)) {
+      await pool.request()
+        .input('carID', sql.Int, carID)
+        .query('DELETE FROM cars WHERE [carID] = @carID');
+    } 
 
-    res.status(200).send('Car deleted successfully.');
+    res.status(200).json({ message: 'Car deleted successfully.' });
   } catch (err) {
     console.error('Error deleting car:', err);
-    res.status(500).send('An error occurred while deleting the car.');
+    res.status(500).json({ message: 'An error occurred while deleting the car.' });
   }
 });
 

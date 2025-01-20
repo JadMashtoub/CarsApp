@@ -5,12 +5,16 @@ const bodyParser = require('body-parser');
 const carsRoute = require('./routes/cars');
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+
 // const PORT = 3000; //LOCALHOST
 // app.use(cors({
 //   origin: 'http://localhost:4200'}));
+
+const PORT = process.env.PORT || 8080;
   app.use(cors({
     origin: 'https://black-smoke-08f69411e.4.azurestaticapps.net'}));
+
+
 app.use(bodyParser.json());
 
 app.use('/cars', carsRoute);

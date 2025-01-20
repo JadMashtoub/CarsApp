@@ -33,7 +33,13 @@ placeholder="Search by name or plate..." >
       <td>{{ car.plateNo }}</td>
       <td>{{ car.keyNo }}</td>
       <td>{{ car.hasBooks }}</td>
-
+      <div class="dropdown">
+        <button class ="dots-menu" (click)="toggleMenu(car.carID)">&#x22EE;</button>
+        <div *ngIf="activeMenu === car.carID" class="dropdown-content">
+          <button (click)="deleteCar(car.carID)">Delete</button>
+          <!-- <button (click)="editCar(car.carID)">Edit</button>  -->
+        </div>
+      </div>
     </tr>
   </tbody>
 </table>

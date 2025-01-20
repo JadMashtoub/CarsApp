@@ -14,7 +14,7 @@ export class ViewcarComponent implements OnInit {
   cars: any[] = [];
   filteredCars: any[] = [];
   searchTerm: string = '';
-
+  activeMenu: number | null = null;
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
@@ -22,8 +22,8 @@ export class ViewcarComponent implements OnInit {
   }
 
 getCars(): void {
-  // this.http.get<any[]>('http://localhost:3000/cars')
-  this.http.get<any[]>('https://carslist.azurewebsites.net/cars')
+  this.http.get<any[]>('http://localhost:3000/cars')
+  // this.http.get<any[]>('https://carslist.azurewebsites.net/cars')
 
     .subscribe({
       next: (data) => {
@@ -45,6 +45,31 @@ getCars(): void {
     });
   }
 
+  deleteCar(carID: number): void {
+    if (confirm('Are you sure you want to delete this car?')) {
+      // this.http.delete(`http://localhost:3000/cars/${carID}`) // Ensure proper URL format with backticks
+      this.http.delete(`https://carslist.azurewebsites.net/cars/${carID}`) // If using the remote server
+        .subscribe({
+          next: (response: any) => {
+            console.log('Delete Response:', response);
+            alert(response.message); // Show the message from the backend
+            this.getCars(); // Reload the cars list to reflect the deletion
+          },
+          error: (err) => {
+            console.error('There was an error deleting the car:', err);
+            alert('An error occurred while deleting the car. Please try again.');
+            this.getCars(); // Reload the cars list to reflect the deletion
+
+          },
+        });
+    }
+  }
+  
+
+
+toggleMenu(carID: number): void{
+  this.activeMenu = this.activeMenu === carID ? null : carID;
+}
 
 
   // filterCars(): void {
