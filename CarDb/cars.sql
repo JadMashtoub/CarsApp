@@ -38,7 +38,9 @@ VALUES  ('Honda Civic','2015','True','ABC123','4','False', 'berwick','123','1232
         -- ('Honda Civic','2015','True','ABC123','4','False','');
 
 INSERT INTO locations(name)
-VALUES ('Berwick')
+VALUES ('PD'),
+('Evolution Drive'),
+('Mcm')
 select * from locations
 select * FROM cars
 
