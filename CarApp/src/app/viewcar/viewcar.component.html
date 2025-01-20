@@ -4,6 +4,9 @@
       <li><a href="/">Home</a></li>
       <li><a href="/addcar">Add Cars</a></li>
       <li class="disabled">View Cars</li> <!-- Greyed out View Cars link -->
+      <li><a href="/location">Add a Location</a></li>
+
+      
     </ul>
   </nav>
 <input type="text" 
@@ -22,6 +25,10 @@ placeholder="Search by name or plate..." >
       <th>Key Number</th>
       <th>Has Books</th>
       <th>Location</th>
+      <th>VIN</th>
+      <th>Colour</th>
+      <th>Damage</th>
+
 
     </tr>
   </thead>
@@ -35,12 +42,17 @@ placeholder="Search by name or plate..." >
       <td>{{ car.keyNo }}</td>
       <td>{{ car.hasBooks }}</td>
       <td>{{ car.location }}</td>
+      <td>{{ car.vin }}</td>
+      <td>{{ car.colour }}</td>
+      <td>{{ car.damage }}</td>
+
 
       <div class="dropdown">
         <button class ="dots-menu" (click)="toggleMenu(car.carID)">&#x22EE;</button>
         <div *ngIf="activeMenu === car.carID" class="dropdown-content">
           <button (click)="deleteCar(car.carID)">Delete</button>
           <!-- <button (click)="editCar(car.carID)">Edit</button>  -->
+           
         </div>
       </div>
     </tr>

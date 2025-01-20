@@ -18,10 +18,11 @@ router.get('/', async (req, res) => {
 
 // POST 
 router.post('/', async (req, res) => {
-  const { name, model, hasPlates, plateNo, keyNo, hasBooks, location } = req.body;
+  const { name, model, hasPlates, plateNo, keyNo, hasBooks, location, vin, colour, damage } = req.body;
 
   const hasPlatesBool = hasPlates === 'true' || hasPlates === true;
   const hasBooksBool = hasBooks === 'true' || hasBooks === true;
+  const damageBool = damage === 'true' || damage === true;
 
   console.log('Request Body:', req.body);
 
@@ -39,10 +40,14 @@ router.post('/', async (req, res) => {
       .input('keyNo', sql.NVarChar, keyNo)
       .input('hasBooks', sql.Bit, hasBooksBool)
       .input('location', sql.NVarChar, location)
+      .input('vin', sql.NVarChar, vin)
+      .input('colour', sql.NVarChar, colour)
+      .input('damage', sql.Bit, damageBool)
+
 
       .query(
-        `INSERT INTO cars ([name], model, hasPlates, plateNo, keyNo, hasBooks, location) 
-         VALUES (@name, @model, @hasPlates, @plateNo, @keyNo, @hasBooks, @location)`
+        `INSERT INTO cars ([name], model, hasPlates, plateNo, keyNo, hasBooks, location, vin, colour, damage) 
+         VALUES (@name, @model, @hasPlates, @plateNo, @keyNo, @hasBooks, @location, @vin, @colour, @damage)`
       );
 
     res.status(201).send('Car added successfully.');

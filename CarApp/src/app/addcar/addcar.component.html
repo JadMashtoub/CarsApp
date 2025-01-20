@@ -43,11 +43,26 @@
   
   <div class="form-group">
     <label for="location">Location </label>
-    <select id="location" [(ngModel)]="car.location" name="location">
+    <select id="location" [(ngModel)]="car.location" name="location" >
       <option *ngFor="let location of locations"[value]="location.name">{{location.name}}
-
       </option>
     </select>
+  <div class="form-group">
+        <label for="vin">VIN number</label>
+        <input type="text" id="vin" [(ngModel)]="car.vin" name="vin" placeholder="Enter VIN number">
+      </div>
+
+  <div class="form-group">
+        <label for="colour">Colour</label>
+        <input type="text" id="colour" [(ngModel)]="car.colour" name="colour" placeholder="Enter car colour">
+      </div>
+
+  <div class="form-group">
+        <label for="damage">Has Damage?</label>
+        <input type="checkbox" id="damage" [(ngModel)]="car.damage" name="damage">
+      </div>
+ 
+    
   </div>
   <button type="submit" class="submit-btn">Add Car</button>
  

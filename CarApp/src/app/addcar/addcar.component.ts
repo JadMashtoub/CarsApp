@@ -22,6 +22,9 @@ export class AddcarComponent {
     plateNo: '',
     keyNo: '',
     location: '',
+    vin: '',
+    colour: '',
+    damage: '',
   };
   locations: any[] = [];
   constructor(private http: HttpClient, private router: Router) {}
@@ -54,7 +57,7 @@ export class AddcarComponent {
         next: (data) => {
           alert('Car added sucessfully!')
           console.log('Car added successfully!', data);
-          this.router.navigate(['/viewcar']); // Navigate to the home page after adding the car
+          // this.router.navigate(['/viewcar']); // Navigate to the home page after adding the car
         },
         error: (err) => {
           console.error('Error adding car:', err);
