@@ -4,6 +4,8 @@
       <li><a href="/">Home</a></li>
       <li class="disabled">Add Cars</li>
       <li><a href="/viewcar">View all cars</a></li>
+      <li><a href="/location">Add a location</a></li>
+
 
     </ul>
   </nav>
@@ -39,7 +41,17 @@
     <input type="text" id="keyNo" [(ngModel)]="car.keyNo" name="keyNo" placeholder="Enter key number">
   </div>
   
+  <div class="form-group">
+    <label for="location">Location </label>
+    <select id="location" [(ngModel)]="car.location" name="location">
+      <option *ngFor="let location of locations"[value]="location.name">{{location.name}}
+
+      </option>
+    </select>
+  </div>
   <button type="submit" class="submit-btn">Add Car</button>
+ 
+
 </form>
 
 <!-- <app-success-modal [showModal]="showModal"></app-success-modal> -->

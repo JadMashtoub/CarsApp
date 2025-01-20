@@ -3,6 +3,8 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const carsRoute = require('./routes/cars');
+const locationsRoute = require('./routes/locations');
+
 
 const app = express();
 
@@ -18,6 +20,8 @@ const PORT = process.env.PORT || 8080;
 app.use(bodyParser.json());
 
 app.use('/cars', carsRoute);
+app.use('/locations', locationsRoute);
+
 
 // Start the server
 app.listen(PORT, () => {

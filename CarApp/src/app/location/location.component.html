@@ -1,0 +1,15 @@
+<nav class="navbar">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/addcar">Add Cars</a></li>
+      <li> <a href="/viewcar">View Cars</a></li> <!-- Greyed out View Cars link -->
+    </ul>
+  </nav>
+<div class="location">
+    <h2>Add a new location</h2>
+<form (submit)="addLocation()">
+    <label for="name">Location Name: </label>
+    <input id="name" [(ngModel)]="locationName" name="name" required />
+    <button type="submit">Add location</button>
+</form>
+</div>

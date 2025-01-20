@@ -13,4 +13,7 @@ export class CarService {
   getAllCars(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
+  // getAllLocations(): Observable<any[]> {
+  //   return this.http.get<any[]>(this.apiUrl);
+  // }
 }

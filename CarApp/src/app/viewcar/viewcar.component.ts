@@ -27,7 +27,7 @@ getCars(): void {
 
     .subscribe({
       next: (data) => {
-        console.log('Fetched Cars:', data);  // Log table
+        console.log('Fetched Cars:', data); 
         this.cars = data;
         this.filteredCars = data; 
       },
@@ -52,13 +52,13 @@ getCars(): void {
         .subscribe({
           next: (response: any) => {
             console.log('Delete Response:', response);
-            alert(response.message); // Show the message from the backend
+            alert(response.message); 
             this.getCars(); // Reload the cars list to reflect the deletion
           },
           error: (err) => {
             console.error('There was an error deleting the car:', err);
             alert('An error occurred while deleting the car. Please try again.');
-            this.getCars(); // Reload the cars list to reflect the deletion
+            this.getCars();
 
           },
         });

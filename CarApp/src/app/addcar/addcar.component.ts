@@ -3,14 +3,16 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms'; 
 import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
 
 @Component({
   selector: 'app-addcar',
   standalone: true,
-  imports: [HttpClientModule,CommonModule, FormsModule],
+  imports: [HttpClientModule,CommonModule, FormsModule, RouterModule],
   templateUrl: './addcar.component.html',
   styleUrls: ['./addcar.component.scss'],
 })
+
 export class AddcarComponent {
   car = {
     name: '',
@@ -19,10 +21,26 @@ export class AddcarComponent {
     hasBooks:'true',
     plateNo: '',
     keyNo: '',
+    location: '',
   };
-
+  locations: any[] = [];
   constructor(private http: HttpClient, private router: Router) {}
+  
+  ngOnInit(): void {
+    this.getLocations();
+  }
+  getLocations(): void {
+    // DEPLOY
+    // this.http.get('http://localhost:3000/locations').subscribe({ 
+      this.http.get('https://carslist.azurewebsites.net/locations').subscribe({
 
+      next:(response: any) => (this.locations = response),
+      error: (err)=>console.error('Error fetching locations: ', err)
+    });
+  }
+  // goToAddLocation(): void {
+  //   this.router.navigate(['/location']);
+  // }
   onSubmit(): void {
     const payload ={
       ...this.car,
@@ -36,10 +54,12 @@ export class AddcarComponent {
         next: (data) => {
           alert('Car added sucessfully!')
           console.log('Car added successfully!', data);
-          // this.router.navigate(['/']); // Navigate to the home page after adding the car
+          this.router.navigate(['/viewcar']); // Navigate to the home page after adding the car
         },
         error: (err) => {
           console.error('Error adding car:', err);
+          // this.router.navigate(['/viewcar']); // Navigate to the home page after adding the car
+
         },
       });
   }

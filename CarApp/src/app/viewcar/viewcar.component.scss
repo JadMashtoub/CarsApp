@@ -27,11 +27,11 @@
   table {
     width: 100%; /* Makes the table take up the entire width of the container */
     margin-top: 20px;
-    border-collapse: collapse; /* Ensures the borders don't have extra space between them */
+    border-collapse: collapse; 
   }
   
   th, td {
-    padding: 8px;
+    padding: 8px ;
     text-align: center; /* Centers table content */
     border: 1px solid #ddd;
   }
