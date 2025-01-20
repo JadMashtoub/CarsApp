@@ -21,6 +21,7 @@ placeholder="Search by name or plate..." >
       <th>Plate Number</th>
       <th>Key Number</th>
       <th>Has Books</th>
+      <th>Location</th>
 
     </tr>
   </thead>
@@ -33,6 +34,8 @@ placeholder="Search by name or plate..." >
       <td>{{ car.plateNo }}</td>
       <td>{{ car.keyNo }}</td>
       <td>{{ car.hasBooks }}</td>
+      <td>{{ car.location }}</td>
+
       <div class="dropdown">
         <button class ="dots-menu" (click)="toggleMenu(car.carID)">&#x22EE;</button>
         <div *ngIf="activeMenu === car.carID" class="dropdown-content">
