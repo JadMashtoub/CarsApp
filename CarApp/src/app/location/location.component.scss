@@ -4,18 +4,20 @@
     align-items: center;
     gap: 15px;
     margin-top: 50px;
+    
 }
 
 label {
     font-size:18px;
+    display: flex;
+
 }
 
 input {
-    padding:10px;
-    font-size: 16px;
-    width:100%;
-    max-width:300px;
-    margin-bottom: 10px;
+  padding: 0.5rem;
+  
+  font-size: 1rem;
+  width: 250px;
 }
 
 button{
@@ -26,6 +28,7 @@ button{
     border-radius: 5px;
     background-color: #007bff;
     color:white;
+    
 }
 button:hover{
     background-color: #0056b3;
@@ -66,3 +69,48 @@ button:hover{
     pointer-events: none; /* Disables click events */
     font-style: italic; /* Makes it look inactive */
   }
+
+
+
+  .delete-location-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // gap: 1rem;
+    margin-bottom: 2rem;
+
+    input {
+      padding: 0.5rem;
+      font-size: 1rem;
+      width: 250px;
+    
+    }
+  
+    button {
+    padding:10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: crimson;
+    color:white;
+    }
+  
+    button:hover {
+      background-color: darkred;
+    }
+  }
+  
+  .location-list {
+    list-style: none;
+    padding: 0;
+    max-width: 400px;
+    margin: auto;
+  
+    li {
+      padding: 0.5rem;
+      border-bottom: 1px solid #ccc;
+      font-size: 1.1rem;
+    }
+  }
+  

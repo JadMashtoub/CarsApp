@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; 
+import { MatCardModule } from '@angular/material/card';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-viewcar',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, FormsModule], 
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    FormsModule,
+    MatExpansionModule
+  ],
   templateUrl: './viewcar.component.html',
   styleUrls: ['./viewcar.component.scss'],
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
+
 export class ViewcarComponent implements OnInit {
   cars: any[] = [];
   filteredCars: any[] = [];
@@ -30,20 +40,25 @@ getCars(): void {
         console.log('Fetched Cars:', data); 
         this.cars = data;
         this.filteredCars = data; 
+        this.filterCars();
       },
       error: (err) => {
         console.error('Error fetching cars:', err);
       },
     });
 }
-  filterCars(): void {
-    const term = this.searchTerm.toLowerCase();
-    this.filteredCars = this.cars.filter((car) => {
-      // console.log(car.name, car.plateNo);
-      return car.name.toLowerCase().includes(term) ||
-             car.plateNo.toLowerCase().includes(term);
-    });
+filterCars(): void {
+  const term = this.searchTerm.toLowerCase().trim();
+  if (!term) {
+    this.filteredCars = this.cars;
+    return;
   }
+
+  this.filteredCars = this.cars.filter((car) => {
+    return car.name.toLowerCase().includes(term) ||
+           car.plateNo.toLowerCase().includes(term);
+  });
+}
 
   deleteCar(carID: number): void {
     if (confirm('Are you sure you want to delete this car?')) {
@@ -71,6 +86,10 @@ toggleMenu(carID: number): void{
   this.activeMenu = this.activeMenu === carID ? null : carID;
 }
 
+// openVicRoads(plate: string): void {
+//   const cleanedPlate = plate.replace(/\s+/g, '');
+//   window.open(`https://www.vicroads.vic.gov.au/registration/rego-check/registration-check?plate=${cleanedPlate}`, '_blank');
+// }
 
   // filterCars(): void {
   //   const term = this.searchTerm.toLowerCase();

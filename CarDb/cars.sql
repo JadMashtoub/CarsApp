@@ -20,7 +20,7 @@ CREATE TABLE cars
     vin [NVARCHAR](50)  NULL,
     colour [NVARCHAR](50)  NULL,
     damage BIT NULL,
-
+    addedDate DATE
 );
 
  CREATE TABLE locations 
@@ -48,3 +48,7 @@ select * FROM cars
 -- ALTER TABLE cars ADD vin NVARCHAR(100) NULL;
 -- ALTER TABLE cars ADD colour NVARCHAR(50) NULL;
 -- ALTER TABLE cars ADD damage NVARCHAR(50) NULL;
+
+
+-- ALTER TABLE cars ADD addedDate DATE;
+

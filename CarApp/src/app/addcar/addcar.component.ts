@@ -14,6 +14,8 @@ import { RouterModule, Routes } from '@angular/router';
 })
 
 export class AddcarComponent {
+  today: string = new Date().toISOString().split('T')[0]; 
+
   car = {
     name: '',
     model: '',
@@ -25,6 +27,7 @@ export class AddcarComponent {
     vin: '',
     colour: '',
     damage: '',
+    addedDate:this.today,
   };
   locations: any[] = [];
   constructor(private http: HttpClient, private router: Router) {}

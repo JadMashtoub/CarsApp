@@ -33,6 +33,35 @@ router.post('/', async(req, res) => {
         res.status(500).send('An error occurred while adding the location');
     }
     });
+
+    //DELETE LOCATIONS
+    router.delete('/:identifier', async (req, res) => {
+      const { identifier } = req.params;
+    
+      try {
+        const pool = await sql.connect(dbConfig);
+    
+        // Check if the location exists
+        const checkResult = await pool.request()
+          .input('identifier', sql.NVarChar, identifier)
+          .query(`SELECT * FROM locations WHERE [name] = @identifier`);
+    
+        if (checkResult.recordset.length === 0) {
+          return res.status(404).json({ message: 'Location not found.' });
+        }
+    
+        // Perform the delete
+        await pool.request()
+          .input('identifier', sql.NVarChar, identifier)
+          .query('DELETE FROM locations WHERE [name] = @identifier');
+    
+        res.status(200).json({ message: 'Location deleted successfully.' });
+    
+      } catch (err) {
+        console.error('Error deleting Location:', err);
+        res.status(500).json({ message: 'An error occurred while deleting the Location.' });
+      }
+    });
     module.exports = router;
 
 

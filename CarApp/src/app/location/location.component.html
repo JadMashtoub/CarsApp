@@ -2,16 +2,37 @@
     <ul>
       <li><a href="/">Home</a></li>
       <li><a href="/addcar">Add Cars</a></li>
-      <li> <a href="/viewcar">View Cars</a></li> <!-- Greyed out View Cars link -->
-      <li class="disabled">Add a location</li>
+      <li> <a href="/viewcar">View Cars</a></li> 
+      <li class="disabled">Locations</li>
 
     </ul>
   </nav>
 <div class="location">
     <h2>Add a new location</h2>
 <form (submit)="addLocation()">
-    <label for="name">Location Name: </label>
+    <!-- <label for="name">Location Name: </label> -->
     <input id="name" [(ngModel)]="locationName" name="name" required />
-    <button type="submit">Add location</button>
+    <button type="submit">Add</button>
 </form>
-</div>
+
+
+  <h2>Delete Location by Name</h2>
+  <!-- <label for="name">Location Name: </label> -->
+
+  <div class="delete-location-bar">    
+    <input
+      type="text"
+      [(ngModel)]="deleteTarget"
+      placeholder="Enter location name to delete"
+    />
+    <button (click)="deleteLocation(deleteTarget)">Delete</button>
+  </div>
+  
+  <hr />
+  
+  <h3>Existing Locations</h3>
+  <ul class="location-list">
+    <li *ngFor="let location of locations">
+      {{ location.name }}
+    </li>
+  </ul>
