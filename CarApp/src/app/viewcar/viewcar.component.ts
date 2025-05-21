@@ -34,6 +34,7 @@ export class ViewcarComponent implements OnInit {
 getCars(): void {
   // this.http.get<any[]>('http://localhost:3000/cars')
   this.http.get<any[]>('https://carslist.azurewebsites.net/cars')
+  // this.http.get<any[]>('http://127.0.0.1:8080/api/cars')
 
     .subscribe({
       next: (data) => {
@@ -62,8 +63,10 @@ filterCars(): void {
 
   deleteCar(carID: number): void {
     if (confirm('Are you sure you want to delete this car?')) {
-      // this.http.delete(`http://localhost:3000/cars/${carID}`) // Ensure proper URL format with backticks
+      // this.http.delete(`http://localhost:3000/cars/${carID}`) 
       this.http.delete(`https://carslist.azurewebsites.net/cars/${carID}`) // If using the remote server
+      // this.http.delete(`http://127.0.0.1:8080/api/cars/${carID}`) 
+
         .subscribe({
           next: (response: any) => {
             console.log('Delete Response:', response);

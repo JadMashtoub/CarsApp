@@ -39,6 +39,7 @@ export class AddcarComponent {
     // DEPLOY
     // this.http.get('http://localhost:3000/locations').subscribe({ 
       this.http.get('https://carslist.azurewebsites.net/locations').subscribe({
+      // this.http.get('http://127.0.0.1:8080/api/locations').subscribe({
 
       next:(response: any) => (this.locations = response),
       error: (err)=>console.error('Error fetching locations: ', err)
@@ -55,6 +56,7 @@ export class AddcarComponent {
     };
     this.http.post('https://carslist.azurewebsites.net/cars', this.car, { responseType: 'text' })
     // this.http.post('http://localhost:3000/cars', this.car, { responseType: 'text' })
+      // this.http.post('http://127.0.0.1:8080/api/cars', this.car, {responseType: 'text'})
 
       .subscribe({
         next: (data) => {
